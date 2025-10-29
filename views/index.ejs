@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Artículos Guardados</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f9f9f9;
+            margin: 40px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .articulo {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .articulo h2 {
+            margin: 0 0 10px;
+        }
+
+        a {
+            color: #0077cc;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>📚 Lista de Artículos</h1>
+
+    <% if (articulos.length===0) { %>
+        <p>No hay artículos registrados todavía.</p>
+        <% } else { %>
+            <% articulos.forEach(a=> { %>
+                <div class="articulo">
+                    <h2>
+                        <%= a.titulo %>
+                    </h2>
+                    <p><strong>Autores:</strong>
+                        <%= a.autores.join(', ') %></p>
+        <p><strong>Año:</strong> <%= a.anio_publicacion %></p>
+        <p><strong>Revista:</strong> <%= a.revista %></p>
+        <p><strong>Base de datos:</strong> <%= a.base_datos %></p>
+        <p><strong>Resumen:</strong> <%= a.resumen %></p>
+        <p><strong>Referencias:</strong> <%= a.cantidad_referencias %></p>
+        <p><a href="<%= a.enlace %>" target="_blank">Ver DOI</a></p>
+        <p><a href="<%= a.pdf %>" target="_blank">Ver PDF</a></p>
+      </div>
+    <% }) %>
+  <% } %>
+</body>
+</html>
